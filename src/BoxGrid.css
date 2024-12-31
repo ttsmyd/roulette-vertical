@@ -28,7 +28,7 @@ body {
   max-width: 600px;
   margin: 0 auto;
   padding: 0px;
-  width: 100%;
+  width: inherit;
   transition: all 0.5s;
   transform: rotate(90deg);
 }
