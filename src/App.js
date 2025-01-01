@@ -1,8 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import item1 from "./item1.png";
-import item2 from "./item2.png";
-import item3 from "./item3.png";
-import item4 from "./item4.png";
+import percent3 from "./percent3.png";
+import percent5 from "./percent5.png";
+import percent15 from "./percent15.png";
+import percent10 from "./percent15.png";
+import chibo from "./chibo.png";
+import kinder from "./kinder.png";
+import kran from "./kran.png";
+import mujuice from "./mujuice.png";
+import skamya from "./skamya2.png";
+import vaffy from "./vaffy.png"
+import background from "./background.webp";
 import rollSound from "./open_box.mp3";
 import winSound from "./win_01.mp3";
 import "./BoxGrid.css";
@@ -24,17 +31,26 @@ const BoxGrid = () => {
   const [shuffledColors, setShuffledColors] = useState([]);
   const [isRolling, setIsRolling] = useState(false); // State to track roll status
   const halfIndex = Math.round(boxes.length / 2) + 1;
-  console.log(halfIndex, "Value");
   const itemBoxRef = useRef(null);
   const audioRef = useRef(null);
   const audioWinRef = useRef(null);
   const [transitionDuration, setTransitionDuration] = useState("none");
 
   const images = [
-    { name: "Sneaker", price: "5465", url: item1 },
-    { name: "Tickets", price: "1233", url: item2 },
-    { name: "Robot", price: "6876", url: item3 },
-    { name: "Sunglasses", price: "34765", url: item4 },
+    { name: "Скидка Летуаль 3%", price: "Промокод: PIKABU8", url: percent3 },
+    { name: "Скидка 5% на теплоходы в феврале", price: "", url: percent5 },
+    { name: "Скидка 5% на оранжевые шторы", price: "", url: percent5 },
+    { name: "Скидка Lamoda 10%", price: "Промокод: PIKABU10", url: percent10 },
+    { name: "Скидка на смесители GROHE 10%", price: "Промокод: NY2025", url: kran },
+    { name: "Скидка 15%. на корм для кошек", price: "Промокод: NY2025", url: percent10 },
+    { name: "Скидка 15% в магазинах дверных ручек", price: "", url: percent15 },
+    { name: "Скидка 15% на брелоки", price: "При покупке от 400 шт.", url: percent15 },
+    { name: "Обнимашки от Ваффи", price: "Доступно при возвращении в Москву", url: vaffy },
+    { name: "Чиби", price: "Ждет дома на Волоколамском", url: chibo },
+    { name: "Kinder Maxi", price: "", url: kinder },
+    { name: "Annki скамья clover", price: "Ждет дома на Волоколамском", url: skamya },
+    { name: "Mujuice Downshifting", price: "Ждет 4 января в Москве", url: mujuice },
+
   ];
 
   const colors = [
@@ -104,84 +120,90 @@ const BoxGrid = () => {
   }
 
   return (
-    <div className="layout-wrapper">
-      <div className="main-wrapper">
-        <div className="vertical-container">
-          <div className="arrow-top">
-            <ArrowTop />
-          </div>
-          <div className="container-grid">
-            <SVGLeft />
-            <div className="box-wrapper">
-              <div className="box-grid">
-                <div className="box-container">
-                  <div
-                    className="item-grid"
-                    style={{
-                      transform: `translateX(${randomValue}%)`,
-                      transition:
-                        randomValue !== 0 ? transitionDuration : "none",
-                    }}
-                  >
-                    {boxes.map((box, index) => {
-                      const color =
-                        shuffledColors[index % shuffledColors.length];
-                      const image =
-                        shuffledImages[index % shuffledImages.length];
-                      return (
-                        <div
-                          className="item-box"
-                          key={index}
-                          data-index={index + 1}
-                          ref={index === halfIndex ? itemBoxRef : null}
-                          onClick={handleClick}
-                        >
-                          <div className="item-box-content">
+      <>
+        <img className="_2_skU"
+             src={background}
+             aria-label="hidden"/>
+        <div className="layout-wrapper">
+        <div className="main-wrapper">
+          <div className="vertical-container">
+            <div className="arrow-top">
+              <ArrowTop/>
+            </div>
+            <div className="container-grid">
+              <SVGLeft/>
+              <div className="box-wrapper">
+                <div className="box-grid">
+                  <div className="box-container">
+                    <div
+                        className="item-grid"
+                        style={{
+                          transform: `translateX(${randomValue}%)`,
+                          transition:
+                              randomValue !== 0 ? transitionDuration : "none",
+                        }}
+                    >
+                      {boxes.map((box, index) => {
+                        const color =
+                            shuffledColors[index % shuffledColors.length];
+                        const image =
+                            shuffledImages[index % shuffledImages.length];
+                        return (
                             <div
-                              className="item"
-                              style={{
-                                borderColor: color.border,
-                                borderWidth: "1px",
-                                borderStyle: "solid",
-                              }}
+                                className="item-box"
+                                key={index}
+                                data-index={index + 1}
+                                ref={index === halfIndex ? itemBoxRef : null}
+                                onClick={handleClick}
                             >
-                              <div
-                                className="rarity-shadow"
-                                style={{
-                                  backgroundColor: color.background,
-                                }}
-                              />
-                              <div className="item-cover">
-                                <img src={image.url} alt={image.name} />
+                              <div className="item-box-content">
+                                <div
+                                    className="item"
+                                    style={{
+                                      borderColor: color.border,
+                                      borderWidth: "1px",
+                                      borderStyle: "solid",
+                                    }}
+                                >
+                                  <div
+                                      className="rarity-shadow"
+                                      style={{
+                                        backgroundColor: color.background,
+                                      }}
+                                  />
+                                  <div className="item-cover">
+                                    <img src={image.url} alt={image.name}/>
+                                  </div>
+                                  <div className="item-info">
+                                    {image.name}
+                                    <span>{image.price}</span>
+                                  </div>
+                                  <div
+                                      className="rarity-border"
+                                      style={{backgroundColor: color.background}}
+                                  />
+                                </div>
                               </div>
-                              <div className="item-info">
-                                {image.name}
-                                <span>${image.price}</span>
-                              </div>
-                              <div
-                                className="rarity-border"
-                                style={{ backgroundColor: color.background }}
-                              />
                             </div>
-                          </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               </div>
+              <SVGRight/>
             </div>
-            <SVGRight />
           </div>
         </div>
+        <button onClick={rollRandomLeft} disabled={isRolling}>
+          Вращать
+        </button>
+        {" "}
+        {/* Disable button when rolling */}
+        <audio ref={audioRef} src={rollSound}/>
+        <audio ref={audioWinRef} src={winSound}/>
       </div>
-      <button onClick={rollRandomLeft} disabled={isRolling}>
-        Roll
-      </button>{" "}
-      {/* Disable button when rolling */}
-      <audio ref={audioRef} src={rollSound} />
-      <audio ref={audioWinRef} src={winSound} />
-    </div>
+        </>
   );
 };
 
@@ -189,11 +211,11 @@ export default BoxGrid;
 
 const SVGLeft = () => {
   return (
-    <svg viewBox="0 0 44 180" className="css-qs6ru0">
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M16 0C7.16344 0 0 7.16344 0 16V70C11.0457 70 20 78.9543 20 90C20 101.046 11.0457 110 0 110V164C0 172.837 7.16344 180 16 180H42V156H44V144H42V136H44V124H42V116H44V104H42V96H44V84H42V76H44V64H42V56H44V44H42V36H44V24H42V16H44V4H42V0H16Z"
+      <svg viewBox="0 0 44 180" className="css-qs6ru0">
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M16 0C7.16344 0 0 7.16344 0 16V70C11.0457 70 20 78.9543 20 90C20 101.046 11.0457 110 0 110V164C0 172.837 7.16344 180 16 180H42V156H44V144H42V136H44V124H42V116H44V104H42V96H44V84H42V76H44V64H42V56H44V44H42V36H44V24H42V16H44V4H42V0H16Z"
       ></path>
     </svg>
   );
