@@ -241,6 +241,7 @@ body {
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.3px;
+  text-align: center;
   display: none;
 }
 
@@ -254,9 +255,9 @@ body {
 }
 
 button {
-  background: #282d32;
+  background: #fff;
   border: none;
-  color: #fff;
+  color: #000000;
   padding: 12px 50px;
   font-size: 16px;
   border-radius: 30px;

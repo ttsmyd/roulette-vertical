@@ -42,7 +42,7 @@ const BoxGrid = () => {
     { name: "Скидка 5% на оранжевые шторы", price: "", url: percent5 },
     { name: "Скидка Lamoda 10%", price: "Промокод: PIKABU10", url: percent10 },
     { name: "Скидка на смесители GROHE 10%", price: "Промокод: NY2025", url: kran },
-    { name: "Скидка 15%. на корм для кошек", price: "Промокод: NY2025", url: percent10 },
+    { name: "Скидка 15% на корм для кошек", price: "Промокод: NY2025", url: percent10 },
     { name: "Скидка 15% в магазинах дверных ручек", price: "", url: percent15 },
     { name: "Скидка 15% на брелоки", price: "При покупке от 400 шт.", url: percent15 },
     { name: "Обнимашки от Ваффи", price: "Доступно при возвращении в Москву", url: vaffy },
